@@ -5,14 +5,38 @@ body {
 }
 
 .contenedor {
-  width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   background-color: #00ffd5;
 }
 
 .menu {
-  width: 270px;
-  height: 100%;
-  background-color: #000000;
+  flex: 1;
+  background-color: #00ffd5;
+}
+
+.principal {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  flex: 1;
+  background-color: #00eaff;
+}
+
+.contenido {
+  flex: 4;
+  background-color: lightgray;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+  padding: 35px;
+}
+
+.cuadro {
+  flex: 1 1 40%;
+  background-color: #e0009b;
+  border: 2px solid #00eaff;
 }
