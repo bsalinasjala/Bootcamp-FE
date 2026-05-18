@@ -7,18 +7,8 @@ body {
 .contenedor {
   min-height: 100vh;
   display: flex;
-  background-color: #00ffd5;
-}
-
-.menu {
-  flex: 1;
-  background-color: #00ffd5;
-}
-
-.principal {
-  flex: 3;
-  display: flex;
   flex-direction: column;
+  background-color: #00ffd5;
 }
 
 .header {
@@ -26,13 +16,41 @@ body {
   background-color: #00eaff;
 }
 
-.contenido {
+.cuerpo {
   flex: 4;
+  display: flex;
+  flex-direction: row;
+}
+
+.menu {
+  flex: 1;
+  background-color: #00ffd5;
+}
+
+.contenido {
+  flex: 3;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+}
+
+.linea-uno {
+  flex: 1;
+  background-color: #a9c3ee;
+}
+
+.linea-dos {
+  flex: 1;
+  background-color: #5d4bb2;
+}
+
+.zona-cuadros {
+  flex: 5;
   background-color: lightgray;
   display: flex;
   flex-wrap: wrap;
-  gap: 35px;
-  padding: 35px;
+  gap: 30px;
+  padding: 30px;
 }
 
 .cuadro {
