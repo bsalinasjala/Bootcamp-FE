@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { RecipeModel } from './models';
 import { MOCK_RECIPES } from './mock-recipes';
 
@@ -14,6 +14,12 @@ export class App {
   protected readonly selectedRecipe = signal<RecipeModel>(this.recipes[0]);
   protected readonly servings = signal<number>(1);
 
+  protected readonly adjustedIngredients = computed(() =>
+    this.selectedRecipe().ingredients.map((ingredient) => ({
+      ...ingredient,
+      quantity: ingredient.quantity * this.servings(),
+    }))
+  );
   protected selectRecipe(recipe: RecipeModel): void {
     this.selectedRecipe.set(recipe);
   }
@@ -22,14 +28,14 @@ export class App {
   }
 
   protected decreaseServings(): void {
-    this.servings.update(current => current - 1);
+    this.servings.update((current) => (current > 1 ? current - 1 : 1));
   }
 
-  protected logInfo(): void {
-    console.log("Info button clicked!")
-  }
-
-  protected logWarning(): void {
-    console.log("Warning button clicked!")
-  }
+  /*   protected logInfo(): void {
+      console.log("Info button clicked!")
+    }
+  
+    protected logWarning(): void {
+      console.log("Warning button clicked!")
+    } */
 }
