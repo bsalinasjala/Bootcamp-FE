@@ -12,10 +12,19 @@ export class App {
   protected readonly title = signal<string>('My Recipe Box');
   protected readonly recipes = MOCK_RECIPES;
   protected readonly selectedRecipe = signal<RecipeModel>(this.recipes[0]);
+  protected readonly servings = signal<number>(1);
 
   protected selectRecipe(recipe: RecipeModel): void {
     this.selectedRecipe.set(recipe);
   }
+  protected increaseServings(): void {
+    this.servings.update(current => current + 1);
+  }
+
+  protected decreaseServings(): void {
+    this.servings.update(current => current - 1);
+  }
+
   protected logInfo(): void {
     console.log("Info button clicked!")
   }

@@ -3,6 +3,10 @@
 <h2>{{ selectedRecipe().name }}</h2>
 <p>{{ selectedRecipe().description }}</p>
 
+<h3>Servings: {{ servings() }}</h3>
+<button (click)="decreaseServings()">-</button>
+<button (click)="increaseServings()">+</button>
+
 <h3>Ingredients</h3>
 
 <ul>
