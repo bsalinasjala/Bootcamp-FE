@@ -1,5 +1,22 @@
-<h1> {{ title() }} </h1>
+<h1>{{ title() }}</h1>
 
-<button (click)="logInfo()">Log Info</button>
+<h2>{{ selectedRecipe().name }}</h2>
+<p>{{ selectedRecipe().description }}</p>
 
-<button (click)="logWarning()">Log Warning</button>
+<h3>Ingredients</h3>
+
+<ul>
+    @for (ingredient of selectedRecipe().ingredients; track ingredient.name) {
+    <li>
+        {{ ingredient.quantity }} {{ ingredient.unit }} - {{ ingredient.name }}
+    </li>
+    }
+</ul>
+
+<button (click)="selectRecipe(recipes[0])">
+    Spaghetti Carbonara
+</button>
+
+<button (click)="selectRecipe(recipes[1])">
+    Caprese Salad
+</button>

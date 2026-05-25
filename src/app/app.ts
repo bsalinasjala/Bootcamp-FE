@@ -1,5 +1,7 @@
 import { Component, signal } from '@angular/core';
-import { Notifier } from "./notifier/notifier"
+import { RecipeModel } from './models';
+import { MOCK_RECIPES } from './mock-recipes';
+
 @Component({
   selector: 'app-root',
   imports: [],
@@ -8,6 +10,12 @@ import { Notifier } from "./notifier/notifier"
 })
 export class App {
   protected readonly title = signal<string>('My Recipe Box');
+  protected readonly recipes = MOCK_RECIPES;
+  protected readonly selectedRecipe = signal<RecipeModel>(this.recipes[0]);
+
+  protected selectRecipe(recipe: RecipeModel): void {
+    this.selectedRecipe.set(recipe);
+  }
   protected logInfo(): void {
     console.log("Info button clicked!")
   }
