@@ -1,0 +1,23 @@
+<div class="contenedor" [class.cerrado]="!menuOpen()">
+  <div class="header">
+    <button (click)="actionMenu()">Menu</button>
+    <h1>{{ title() }}</h1>
+  </div>
+
+  <div class="menu">
+    <a href="#">Profile</a>
+    <a href="#">Settings</a>
+  </div>
+
+  <div class="contenido">
+    <div class="linea-uno"></div>
+    <div class="linea-dos"></div>
+
+    <div class="zona-cuadros">
+      <div class="cuadro"></div>
+      <div class="cuadro"></div>
+      <div class="cuadro"></div>
+      <div class="cuadro"></div>
+    </div>
+  </div>
+</div>
