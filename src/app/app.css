@@ -1,0 +1,58 @@
+.page {
+  min-height: 100vh;
+  display: grid;
+  background: white;
+}
+
+.grid-parent {
+  display: grid;
+  grid-template-columns: 2fr 5fr 2fr;
+  grid-template-rows: 1fr 1fr;
+
+  gap: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.parent-cell {
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+}
+
+.side-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+
+  gap: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.sub-cell {
+  border: 2px solid black;
+  margin: 0;
+  padding: 0;
+}
+
+.center-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 1.5fr 1.5fr 1fr;
+
+  gap: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.center-sub-cell {
+  border: 2px solid black;
+  margin: 0;
+  padding: 0;
+}
+
+.empty {
+  border: none;
+}
