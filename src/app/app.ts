@@ -1,41 +1,12 @@
-import { Component, signal, computed } from '@angular/core';
-import { RecipeModel } from './models';
-import { MOCK_RECIPES } from './mock-recipes';
+import { Component, signal } from '@angular/core';
+import { RecipeList } from './recipe-list/recipe-list';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [RecipeList],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
 export class App {
   protected readonly title = signal<string>('My Recipe Box');
-  protected readonly recipes = MOCK_RECIPES;
-  protected readonly selectedRecipe = signal<RecipeModel>(this.recipes[0]);
-  protected readonly servings = signal<number>(1);
-
-  protected readonly adjustedIngredients = computed(() =>
-    this.selectedRecipe().ingredients.map((ingredient) => ({
-      ...ingredient,
-      quantity: ingredient.quantity * this.servings(),
-    }))
-  );
-  protected selectRecipe(recipe: RecipeModel): void {
-    this.selectedRecipe.set(recipe);
-  }
-  protected increaseServings(): void {
-    this.servings.update(current => current + 1);
-  }
-
-  protected decreaseServings(): void {
-    this.servings.update((current) => (current > 1 ? current - 1 : 1));
-  }
-
-  /*   protected logInfo(): void {
-      console.log("Info button clicked!")
-    }
-  
-    protected logWarning(): void {
-      console.log("Warning button clicked!")
-    } */
 }
