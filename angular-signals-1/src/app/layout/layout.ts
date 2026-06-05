@@ -14,6 +14,7 @@ export class LayoutComponent {
   protected readonly role = signal<Role>('user');
   protected readonly isAdmin = computed(() => this.role() === 'admin');
 
+  
   protected setRole(role : Role):void {
     this.role.set(role);
     if(role !== 'admin'){

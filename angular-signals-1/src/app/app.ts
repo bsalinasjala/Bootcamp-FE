@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { JsonPipe } from '@angular/common';
-import { ForTest } from "./for-test/for-test";
-import { JsonPipeTest } from "./json-pipe-test/json-pipe-test";
 import { LayoutComponent } from './layout/layout';
+import { JsonPipeTest } from './json-pipe-test/json-pipe-test';
 @Component({
   selector: 'app-root',
-  imports: [JsonPipeTest,LayoutComponent],
+  imports: [LayoutComponent, JsonPipeTest],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

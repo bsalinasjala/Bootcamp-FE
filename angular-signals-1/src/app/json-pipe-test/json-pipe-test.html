@@ -3,11 +3,18 @@
 <p>{{ user }}</p>
 
 <h2>Example 1: Object with JsonPipe</h2>
-// preformatted text es pre html etiqueta
+<!-- preformatted text es pre html etiqueta -->
+<pre>{{ user }}</pre>
 <pre>{{ user | json }}</pre>
 
 <hr>
-
-<h2>Example 2: Another object with JsonPipe</h2>
 <pre>{{ settings }}</pre>
 <pre>{{ settings | json }}</pre>
+
+<h2>Example 2: API response</h2>
+<pre>{{ apiResponse }}</pre>
+<pre>{{ apiResponse | json }}</pre>
+
+<h2>Example 3: Form</h2>
+<pre>{{ formData }}</pre>
+<pre>{{ formData | json }}</pre>

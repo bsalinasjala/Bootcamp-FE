@@ -26,4 +26,18 @@ export class JsonPipeTest {
       sms: false
     }
   };
+
+  apiResponse = {
+    status:200,
+    message: "Success",
+    data:this.user,
+    userSettings:this.settings
+  }
+  formData = {
+    fullName: 'Bruno Salinas',
+    firstName: "Bruno",
+    lastName: "Salinas",
+    email: 'bruno@test.com',
+    password: '123456',
+  };
 }
