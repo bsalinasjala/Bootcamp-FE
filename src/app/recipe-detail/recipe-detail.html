@@ -1,5 +1,11 @@
 <section class="recipe-card">
-    <h2 class="recipe-title">{{ recipe().name }}</h2>
+    <h2 class="recipe-title">
+        {{ recipe().name }}
+
+        @if (recipe().isFavorite) {
+        <span class="favorite-icon">⭐</span>
+        }
+    </h2>
 
     <p class="recipe-description">{{ recipe().description }}</p>
 
