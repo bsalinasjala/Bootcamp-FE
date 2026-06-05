@@ -1,0 +1,31 @@
+<h1>for Performance Test</h1>
+
+<button (click)="testClick()">
+  Click test
+</button>
+
+<p>Counter: {{ counter }}</p>
+
+<hr> 
+
+<h2>Example #1: Function returning array</h2>
+
+@for (data of getData(); track data.id) {
+  <p>{{ data.name }}</p>
+}
+
+<hr>
+
+<h2>Example #2: Observable with async</h2>
+
+@for (data of users$ | async; track data.id) {
+  <p>{{ data.name }}</p>
+}
+
+<hr>
+
+<h2>Example #3: Signal</h2>
+
+@for (data of usersSignal(); track data.id) {
+  <p>{{ data.name }}</p>
+}

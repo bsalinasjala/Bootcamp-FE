@@ -1,0 +1,25 @@
+<div class="contenedor" [class.cerrado]="!menuOpen()">
+  <div class="header">
+    <h1>{{ title() }}</h1>
+    <button type="button" (click)="setRole('user')">User</button>
+    <button type="button" (click)="setRole('admin')">Admin</button>
+  </div>
+
+
+  <div class="menu">
+    @if(isAdmin()){
+      <button (click)="actionMenu()">Menu</button>
+    }
+    <a href="#">Profile</a>
+    <a href="#">Settings</a>
+  </div>
+
+  <div class="contenido">
+    <div class="linea-uno"></div>
+    <div class="linea-dos"></div>
+
+    <div class="zona-cuadros">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
