@@ -1,9 +1,13 @@
 <app-recipe-detail [recipe]="selectedRecipe()"></app-recipe-detail>
 
-<button (click)="selectRecipe(recipes[0])">
-    Spaghetti Carbonara
-</button>
+<div class="search-section">
+    <input type="text" [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)" placeholder="Search recipe...">
+</div>
 
-<button (click)="selectRecipe(recipes[1])">
-    Caprese Salad
-</button>
+<div class="recipe-buttons">
+    @for (recipe of filteredRecipes(); track recipe.id) {
+    <button (click)="selectRecipe(recipe)">
+        {{ recipe.name }}
+    </button>
+    }
+</div>
