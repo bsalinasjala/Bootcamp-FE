@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { JsonPipe } from '@angular/common';
+import { SafeJsonPipe } from '../safe-json-pipe';
 @Component({
   selector: 'app-json-pipe-test',
-  imports: [CommonModule],
+  imports: [JsonPipe, SafeJsonPipe],
   templateUrl: './json-pipe-test.html',
   styleUrl: './json-pipe-test.css'
 })
@@ -21,6 +22,8 @@ export class JsonPipeTest {
   settings = {
     darkMode: true,
     language: 'English',
+    password: "123456",
+    token:"654321",
     notifications: {
       email: true,
       sms: false

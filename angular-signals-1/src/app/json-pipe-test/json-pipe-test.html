@@ -1,7 +1,7 @@
 <h1>Examples</h1>
 
 <p>{{ user }}</p>
-
+<p>{{ user | json }}</p>
 <h2>Example 1: Object with JsonPipe</h2>
 <!-- preformatted text es pre html etiqueta -->
 <pre>{{ user }}</pre>
@@ -18,3 +18,12 @@
 <h2>Example 3: Form</h2>
 <pre>{{ formData }}</pre>
 <pre>{{ formData | json }}</pre>
+
+
+<h2>my SafeJSON</h2>
+<pre>{{ apiResponse }}</pre>
+<pre>{{ apiResponse | json }}</pre>
+<hr>
+@let body = apiResponse | json;
+<pre>{{ body | safeJson }}</pre>
+<hr>
