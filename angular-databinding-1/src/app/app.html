@@ -1,0 +1,8 @@
+<h1>Example 1</h1>
+
+<h1>Counter: {{ initialCount }}</h1>
+
+<app-counter
+  [count]="initialCount"
+  (countChange)="initialCount = $event">
+</app-counter>
