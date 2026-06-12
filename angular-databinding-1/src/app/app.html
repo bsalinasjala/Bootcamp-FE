@@ -1,8 +1,24 @@
-<h1>Example 1</h1>
+<h1>Example 1 - Counter with input() and output()</h1>
 
-<h1>Counter: {{ initialCount }}</h1>
+<h2>Parent count: {{ initialCount }}</h2>
 
 <app-counter
+  title="Angular 21 Counter"
   [count]="initialCount"
+  step="5"
   (countChange)="initialCount = $event">
 </app-counter>
+
+<hr>
+
+<h1>Example 2 - JSON in console</h1>
+
+<app-json-viewer [user]="userData"></app-json-viewer>
+
+<hr>
+
+<h1>Example 3 - Product List</h1>
+
+@for (product of products(); track product.id) {
+  <app-product-card [product]="product"></app-product-card>
+}

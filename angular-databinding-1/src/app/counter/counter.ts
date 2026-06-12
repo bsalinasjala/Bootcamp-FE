@@ -1,35 +1,38 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, numberAttribute, output } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
   imports: [],
   template: `
-    <button (click)="updateCount(-1)">-</button>
+    <h2>{{ title() }}</h2>
+
+    <p>Counter value: {{ count() }}</p>
+    <p>Step: {{ step() }}</p>
+
+    <button (click)="decrease()">-</button>
 
     <span>{{ count() }}</span>
 
-    <button (click)="updateCount(1)">+</button>
+    <button (click)="increase()">+</button>
   `,
-  styles: `
-    button {
-      margin: 8px;
-      padding: 8px 12px;
-      font-size: 18px;
-    }
-
-    span {
-      font-size: 24px;
-      font-weight: bold;
-    }
-  `
 })
 export class Counter {
+  title = input.required<string>();
+
   count = input<number>(0);
+
+  step = input(1, { transform: numberAttribute });
 
   countChange = output<number>();
 
-  updateCount(amount: number) {
-    const newValue = this.count() + amount;
+  increase() {
+    const newValue = this.count() + this.step();
+
+    this.countChange.emit(newValue);
+  }
+
+  decrease() {
+    const newValue = this.count() - this.step();
 
     this.countChange.emit(newValue);
   }
