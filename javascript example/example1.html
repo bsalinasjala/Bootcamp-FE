@@ -7,36 +7,96 @@
 </head>
 <body>
 
-  <h1 id="title">What is the DOM?</h1>
+  <section class="dom-demo">
 
-  <p>
-    The Document Object Model (DOM) is a tree-like representation
-    of an HTML document created by the browser.
-  </p>
+    <h2 id="title">What is the DOM?</h2>
 
-  <p>
-    Each HTML element becomes a node that JavaScript can access
-    and modify dynamically.
-  </p>
+    <p class="description">
+      This demo shows how JavaScript modifies the DOM when the application state changes.
+    </p>
 
-  <h2>Main concepts</h2>
+    <div class="actions">
+      <button id="change-title-btn">
+        Change title
+      </button>
 
-  <ol>
-    <li>HTML elements become nodes.</li>
-    <li>Nodes are organized in a hierarchical tree.</li>
-    <li>JavaScript can add, update, or remove nodes.</li>
-    <li>Changes in the DOM update the user interface.</li>
-  </ol>
+      <button id="add-task-btn">
+        Add task
+      </button>
 
-  <button id="btn">Update the title</button>
+      <button id="reset-btn">
+        Reset demo
+      </button>
+    </div>
 
-<script>
-  const button = document.getElementById('btn');
-  const title = document.getElementById('title');
+    <h3>List rendered with JavaScript</h3>
 
-  button.addEventListener('click', () => {
-    title.textContent = 'DOM updated';
-  });
-</script>
+    <ul id="task-list"></ul>
+
+  </section>
+
+  <script>
+    let title = 'What is the DOM?';
+
+    let tasks = [
+      { id: 1, name: 'HTML elements become nodes.' },
+      { id: 2, name: 'Nodes are organized in a hierarchical tree.' },
+      { id: 3, name: 'JavaScript can add, update, or remove nodes.' },
+      { id: 4, name: 'Changes in the DOM update the user interface.' }
+    ];
+
+    const titleElement = document.getElementById('title');
+    const taskListElement = document.getElementById('task-list');
+
+    const changeTitleButton = document.getElementById('change-title-btn');
+    const addTaskButton = document.getElementById('add-task-btn');
+    const resetButton = document.getElementById('reset-btn');
+
+    function render() {
+      titleElement.textContent = title;
+
+      taskListElement.innerHTML = '';
+
+      tasks.forEach(task => {
+        const li = document.createElement('li');
+        li.textContent = task.name;
+        taskListElement.appendChild(li);
+      });
+    }
+
+    function changeTitle() {
+      title = 'The DOM has been updated!';
+      render();
+    }
+
+    function addTask() {
+      tasks.push({
+        id: Date.now(),
+        name: `New task ${tasks.length + 1}`
+      });
+
+      render();
+    }
+
+    function resetDemo() {
+      title = 'What is the DOM?';
+
+      tasks = [
+        { id: 1, name: 'HTML elements become nodes.' },
+        { id: 2, name: 'Nodes are organized in a hierarchical tree.' },
+        { id: 3, name: 'JavaScript can add, update, or remove nodes.' },
+        { id: 4, name: 'Changes in the DOM update the user interface.' }
+      ];
+
+      render();
+    }
+
+    changeTitleButton.addEventListener('click', changeTitle);
+    addTaskButton.addEventListener('click', addTask);
+    resetButton.addEventListener('click', resetDemo);
+
+    render();
+  </script>
+
 </body>
 </html>
