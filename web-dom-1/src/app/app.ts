@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
-
+import { DomDemo } from './dom-demo/dom-demo';
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [DomDemo],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
