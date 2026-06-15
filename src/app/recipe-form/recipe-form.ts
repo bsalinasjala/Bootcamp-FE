@@ -3,9 +3,11 @@ import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Recipe } from '../recipe';
 import { RecipeModel } from '../models';
+import { MatButtonModule } from '@angular/material/button';
+
 @Component({
   selector: 'app-recipe-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatButtonModule],
   templateUrl: './recipe-form.html',
   styleUrl: './recipe-form.css',
 })

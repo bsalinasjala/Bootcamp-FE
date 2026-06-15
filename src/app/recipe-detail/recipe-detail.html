@@ -16,8 +16,8 @@
         <h3>Servings: {{ servings() }}</h3>
 
         <div class="servings-buttons">
-            <button (click)="decreaseServings()">-</button>
-            <button (click)="increaseServings()">+</button>
+            <button mat-flat-button (click)="decreaseServings()">-</button>
+            <button mat-flat-button (click)="increaseServings()">+</button>
         </div>
     </div>
 
@@ -33,7 +33,7 @@
         </ul>
     </div>
 
-    <a routerLink="/recipes">Back to recipes</a>
+    <a mat-flat-button routerLink="/recipes">Back to recipes</a>
 </section>
 } @else {
 <p>Recipe not found.</p>

@@ -1,4 +1,4 @@
-<a routerLink="/new-recipe">Add New Recipe</a>
+<a class="new-recipe" mat-flat-button routerLink="/new-recipe">Add New Recipe</a>
 
 <div class="search-section">
     <input type="text" [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)" placeholder="Search recipe...">
@@ -6,7 +6,7 @@
 
 <div class="recipe-buttons">
     @for (recipe of filteredRecipes(); track recipe.id) {
-    <a [routerLink]="['/recipes', recipe.id]">
+    <a mat-flat-button [routerLink]="['/recipes', recipe.id]">
         {{ recipe.name }}
     </a>
     }

@@ -2,10 +2,10 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Recipe } from '../recipe';
-
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-recipe-list',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, MatButtonModule],
   templateUrl: './recipe-list.html',
   styleUrl: './recipe-list.css',
 })

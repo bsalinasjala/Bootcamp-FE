@@ -2,10 +2,10 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { RecipeModel } from '../models';
 import { Recipe } from '../recipe';
-
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-recipe-detail',
-  imports: [RouterLink],
+  imports: [RouterLink, MatButtonModule],
   templateUrl: './recipe-detail.html',
   styleUrl: './recipe-detail.css',
 })

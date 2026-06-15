@@ -6,3 +6,8 @@
     display: flex;
     gap: 8px;
 }
+
+.new-recipe {
+    padding: 12px 16px;
+    margin-bottom: 24px;
+}
