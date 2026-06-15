@@ -3,9 +3,9 @@
 <h2>Parent count: {{ initialCount }}</h2>
 
 <app-counter
-  title="Angular 21 Counter"
+  [title]="'Angular 21 Counter'"
   [count]="initialCount"
-  step="5"
+  [step]="'-5'"
   (countChange)="initialCount = $event">
 </app-counter>
 

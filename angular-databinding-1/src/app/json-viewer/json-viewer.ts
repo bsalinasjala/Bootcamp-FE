@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component, input } from '@angular/core';
 
 type User = {
@@ -31,8 +32,5 @@ export class JsonViewer {
       status: currentUser.active ? 'Active user' : 'Inactive user',
       loginCount: currentUser.loginCount,
     });
-
-    console.log('Example 2 - User como JSON:');
-    console.log(JSON.stringify(currentUser, null, 2));
   }
 }
