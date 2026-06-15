@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Demo</title>
+</head>
+<body>
+
+  <h1 id="title">What is the DOM?</h1>
+
+  <p>
+    The Document Object Model (DOM) is a tree-like representation
+    of an HTML document created by the browser.
+  </p>
+
+  <p>
+    Each HTML element becomes a node that JavaScript can access
+    and modify dynamically.
+  </p>
+
+  <h2>Main concepts</h2>
+
+  <ol>
+    <li>HTML elements become nodes.</li>
+    <li>Nodes are organized in a hierarchical tree.</li>
+    <li>JavaScript can add, update, or remove nodes.</li>
+    <li>Changes in the DOM update the user interface.</li>
+  </ol>
+
+  <button id="btn">Update the title</button>
+
+<script>
+  const button = document.getElementById('btn');
+  const title = document.getElementById('title');
+
+  button.addEventListener('click', () => {
+    title.textContent = 'DOM updated';
+  });
+</script>
+</body>
+</html>
