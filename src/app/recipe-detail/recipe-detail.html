@@ -1,15 +1,16 @@
+@if (recipe(); as selectedRecipe) {
 <section class="recipe-card">
     <h2 class="recipe-title">
-        {{ recipe().name }}
+        {{ selectedRecipe.name }}
 
-        @if (recipe().isFavorite) {
+        @if (selectedRecipe.isFavorite) {
         <span class="favorite-icon">⭐</span>
         }
     </h2>
 
-    <p class="recipe-description">{{ recipe().description }}</p>
+    <p class="recipe-description">{{ selectedRecipe.description }}</p>
 
-    <img class="recipe-image" [src]="recipe().imgUrl" [alt]="recipe().name">
+    <img class="recipe-image" [src]="selectedRecipe.imgUrl" [alt]="selectedRecipe.name">
 
     <div class="servings-control">
         <h3>Servings: {{ servings() }}</h3>
@@ -31,4 +32,10 @@
             }
         </ul>
     </div>
+
+    <a routerLink="/recipes">Back to recipes</a>
 </section>
+} @else {
+<p>Recipe not found.</p>
+<a routerLink="/recipes">Back to recipes</a>
+}

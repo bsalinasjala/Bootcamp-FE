@@ -1,0 +1,20 @@
+<h2>Add New Recipe</h2>
+
+<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name" placeholder="Recipe name">
+    </div>
+
+    <div>
+        <label for="description">Description</label>
+        <input id="description" type="text" formControlName="description" placeholder="Recipe description">
+    </div>
+
+    <div>
+        <label for="imgUrl">Image URL</label>
+        <input id="imgUrl" type="text" formControlName="imgUrl" placeholder="Image URL">
+    </div>
+
+    <button type="submit">Save Recipe</button>
+</form>

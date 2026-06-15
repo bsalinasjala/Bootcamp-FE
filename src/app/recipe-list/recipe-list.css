@@ -1,0 +1,8 @@
+.search-section {
+    margin-bottom: 12px;
+}
+
+.recipe-buttons {
+    display: flex;
+    gap: 8px;
+}
