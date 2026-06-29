@@ -3,17 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web Components Card</title>
+  <title>Web Components Card Outside</title>
 </head>
 <body>
 
   <developer-card
+    id="hirotaka-nifuji"
     card-title="Hirotaka Nifuji"
-    image="./images/hirotaka-nifuji.jpg"
+    image="../images/hirotaka-nifuji.jpg"
     role="Developer">
   </developer-card>
+  <br>
+
+  <remove-card-button
+    target-id="hirotaka-nifuji"
+    label="Remove Hirotaka Card">
+  </remove-card-button>
 
   <script src="./developer-card.js"></script>
+  <script src="./remove-card-button.js"></script>
 
 </body>
 </html>
