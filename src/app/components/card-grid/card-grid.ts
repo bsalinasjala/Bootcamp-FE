@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { YugiohCard } from '../../models/yugioh-card.model';
 import { CardItem } from '../card-item/card-item';
 
@@ -6,6 +6,7 @@ import { CardItem } from '../card-item/card-item';
   selector: 'app-card-grid',
   imports: [CardItem],
   templateUrl: './card-grid.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './card-grid.css',
 })
 export class CardGrid {

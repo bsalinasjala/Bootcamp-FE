@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { YugiohCard } from '../../models/yugioh-card.model';
 import { SectionTab, SectionTabs } from '../section-tabs/section-tabs';
 
@@ -6,6 +6,7 @@ import { SectionTab, SectionTabs } from '../section-tabs/section-tabs';
   selector: 'app-card-detail',
   imports: [SectionTabs],
   templateUrl: './card-detail.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './card-detail.css',
 })
 export class CardDetail {

@@ -1,10 +1,20 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search-bar',
   imports: [FormsModule],
   templateUrl: './search-bar.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './search-bar.css',
 })
 export class SearchBar implements AfterViewInit {
