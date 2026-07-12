@@ -24,7 +24,7 @@
 
         <app-card-grid
           [cards]="cards()"
-          [selectedCardId]="$safeNavigationMigration(selectedCard()?.id)"
+          [selectedCardId]="selectedCard()?.id"
           (cardSelected)="selectCard($event)"
         />
       </div>

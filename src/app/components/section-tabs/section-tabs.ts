@@ -1,4 +1,4 @@
-import { Component, Input, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 
 export interface SectionTab {
   title: string;
@@ -9,7 +9,6 @@ export interface SectionTab {
   selector: 'app-section-tabs',
   imports: [],
   templateUrl: './section-tabs.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './section-tabs.css',
 })
 export class SectionTabs {

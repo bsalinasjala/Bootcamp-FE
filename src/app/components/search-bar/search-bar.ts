@@ -6,7 +6,6 @@ import {
   Input,
   Output,
   ViewChild,
-  ChangeDetectionStrategy,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -14,7 +13,6 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-search-bar',
   imports: [FormsModule],
   templateUrl: './search-bar.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './search-bar.css',
 })
 export class SearchBar implements AfterViewInit {

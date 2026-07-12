@@ -1,11 +1,10 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { YugiohCard } from '../../models/yugioh-card.model';
 
 @Component({
   selector: 'app-card-item',
   imports: [],
   templateUrl: './card-item.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './card-item.css',
 })
 export class CardItem {

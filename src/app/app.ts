@@ -1,13 +1,4 @@
-import {
-  Component,
-  DestroyRef,
-  OnInit,
-  inject,
-  signal,
-  ChangeDetectionStrategy,
-} from '@angular/core';
-import { finalize, take } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CardDetail } from './components/card-detail/card-detail';
 import { CardGrid } from './components/card-grid/card-grid';
 import { SearchBar } from './components/search-bar/search-bar';
@@ -18,12 +9,10 @@ import { YugiohCardService } from './services/yugioh-card.service';
   selector: 'app-root',
   imports: [SearchBar, CardGrid, CardDetail],
   templateUrl: './app.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.css',
 })
 export class App implements OnInit {
   private readonly cardService = inject(YugiohCardService);
-  private readonly destroyRef = inject(DestroyRef);
 
   searchTerm = signal('');
   cards = signal<YugiohCard[]>([]);
@@ -52,23 +41,18 @@ export class App implements OnInit {
     this.loading.set(true);
     this.error.set('');
 
-    this.cardService
-      .searchCards(term)
-      .pipe(
-        take(1),
-        takeUntilDestroyed(this.destroyRef),
-        finalize(() => this.loading.set(false)),
-      )
-      .subscribe({
-        next: (cards) => {
-          this.cards.set(cards);
-          this.selectedCard.set(cards[0] ?? null);
-        },
-        error: () => {
-          this.cards.set([]);
-          this.selectedCard.set(null);
-          this.error.set('No se pudo cargar el catalogo. Intenta de nuevo.');
-        },
-      });
+    this.cardService.searchCards(term).subscribe({
+      next: (cards) => {
+        this.cards.set(cards);
+        this.selectedCard.set(cards[0] ?? null);
+        this.loading.set(false);
+      },
+      error: () => {
+        this.cards.set([]);
+        this.selectedCard.set(null);
+        this.error.set('No se pudo cargar el catalogo. Intenta de nuevo.');
+        this.loading.set(false);
+      },
+    });
   }
 }
