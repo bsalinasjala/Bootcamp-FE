@@ -1,0 +1,5 @@
+<button class="card-item" [class.is-selected]="selected" type="button" (click)="selectedCard.emit(card)">
+  <img class="card-image" [src]="imageUrl" [alt]="card.name" />
+  <span class="card-name">{{ card.name }}</span>
+  <span class="card-type">{{ card.humanReadableCardType || card.type }}</span>
+</button>

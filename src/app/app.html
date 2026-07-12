@@ -1,71 +1,46 @@
 <main class="page">
-  <section class="grid-parent">
-
-    <div class="parent-cell side-grid side-top-left">
-      <div class="sub-cell card-1">
-      </div>
-      <div class="sub-cell card-2"></div>
-      <div class="sub-cell card-3"></div>
-      <div class="sub-cell side-card"></div>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Duelist Codex</p>
+      <h1>Explorador de cartas Yu-Gi-Oh!</h1>
     </div>
 
-    <div class="parent-cell center-grid">
-      <div class="center-space"></div>
-
-      <div class="center-sub-cell">
-        <app-card></app-card>
-      </div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-
-      <div class="center-space"></div>
-    </div>
-
-    <div class="parent-cell side-grid side-top-right">
-      <div class="sub-cell card-1"></div>
-      <div class="sub-cell card-2"></div>
-      <div class="sub-cell card-3"></div>
-    </div>
-
-    <div class="parent-cell side-grid side-bottom-left">
-      <div class="sub-cell card-1"></div>
-      <div class="sub-cell card-2"></div>
-      <div class="sub-cell card-3"></div>
-    </div>
-
-    <div class="parent-cell center-grid">
-      <div class="center-space"></div>
-
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      <div class="center-sub-cell"></div>
-      
-
-      <div class="center-space"></div>
-    </div>
-
-    <div class="parent-cell side-grid side-bottom-right">
-      <div class="sub-cell card-1"></div>
-      <div class="sub-cell card-2"></div>
-      <div class="sub-cell card-3"></div>
-      <div class="sub-cell side-card"></div>
-    </div>
-
+    <app-search-bar [value]="searchTerm()" (search)="searchCards($event)" />
   </section>
-</main>
 
-<!-- <app-card></app-card> -->
+  @if (loading()) {
+    <p class="state-message">Cargando cartas...</p>
+  } @else if (error()) {
+    <p class="state-message state-error">{{ error() }}</p>
+  } @else if (cards().length === 0) {
+    <p class="state-message">No se encontraron cartas para "{{ searchTerm() }}".</p>
+  } @else {
+    <section class="content-layout">
+      <div class="catalog-panel">
+        <div class="panel-header">
+          <h2>Catalogo</h2>
+          <span>{{ cards().length }} cartas</span>
+        </div>
+
+        <app-card-grid
+          [cards]="cards()"
+          [selectedCardId]="selectedCard()?.id"
+          (cardSelected)="selectCard($event)"
+        />
+      </div>
+
+      <aside class="detail-panel">
+        <div class="panel-header">
+          <h2>Detalle</h2>
+          <button type="button" (click)="clearSelection()">Limpiar</button>
+        </div>
+
+        @if (selectedCard(); as card) {
+          <app-card-detail [card]="card" />
+        } @else {
+          <p class="state-message">Selecciona una carta del catalogo.</p>
+        }
+      </aside>
+    </section>
+  }
+</main>

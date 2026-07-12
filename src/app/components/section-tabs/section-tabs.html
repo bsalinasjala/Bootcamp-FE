@@ -1,0 +1,21 @@
+<div class="tabs">
+  <div class="tab-buttons" role="tablist">
+    @for (section of sections; track section.title; let index = $index) {
+      <button
+        class="tab-button"
+        [class.is-active]="activeIndex() === index"
+        type="button"
+        (click)="activeIndex.set(index)"
+      >
+        {{ section.title }}
+      </button>
+    }
+  </div>
+
+  @if (sections[activeIndex()]; as section) {
+    <section class="tab-panel">
+      <h3>{{ section.title }}</h3>
+      <p>{{ section.content }}</p>
+    </section>
+  }
+</div>

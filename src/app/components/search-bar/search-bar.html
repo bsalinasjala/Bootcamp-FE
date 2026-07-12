@@ -1,0 +1,15 @@
+<form class="search-form" (ngSubmit)="onSubmit()">
+  <label class="search-label" for="card-search">Buscar carta</label>
+  <div class="search-row">
+    <input
+      #searchInput
+      id="card-search"
+      name="card-search"
+      class="search-input"
+      type="search"
+      placeholder="Ej. Dragon, Dark Magician, Obelisk"
+      [(ngModel)]="searchTerm"
+    />
+    <button class="search-button" type="submit">Buscar</button>
+  </div>
+</form>

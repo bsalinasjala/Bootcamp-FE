@@ -1,0 +1,42 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tab-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tab-button {
+  padding: 0.55rem 0.75rem;
+  border: 2px solid #d1d5db;
+  background: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+.tab-button.is-active {
+  border-color: #1f2937;
+  background: #1f2937;
+  color: white;
+}
+
+.tab-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 2px solid #d1d5db;
+}
+
+.tab-panel h3,
+.tab-panel p {
+  margin: 0;
+}
+
+.tab-panel p {
+  line-height: 1.5;
+}
