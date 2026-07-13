@@ -1,5 +1,40 @@
-<button class="card-item" [class.is-selected]="selected" type="button" (click)="selectedCard.emit(card)">
-  <img class="card-image" [src]="imageUrl" [alt]="card.name" />
-  <span class="card-name">{{ card.name }}</span>
-  <span class="card-type">{{ card.humanReadableCardType || card.type }}</span>
+<button
+  class="card-item"
+  [class.is-selected]="selected()"
+  [class.frame-normal]="card().frameType === 'normal'"
+  [class.frame-effect]="card().frameType === 'effect'"
+  [class.frame-spell]="card().frameType === 'spell'"
+  [class.frame-trap]="card().frameType === 'trap'"
+  [class.frame-extra]="card().frameType !== 'normal' && card().frameType !== 'effect' && card().frameType !== 'spell' && card().frameType !== 'trap'"
+  type="button"
+  (click)="selectedCard.emit(card())"
+>
+  <span class="card-title">{{ card().name }}</span>
+
+  <span class="card-stars" aria-label="Nivel de la carta">
+    @for (star of stars; track $index) {
+      <img src="/images/estrella.png" alt="" class="star" />
+    }
+  </span>
+
+  <span class="artwork-frame">
+    @if (artworkUrl) {
+      <img class="card-artwork" [src]="artworkUrl" [alt]="card().name" />
+    } @else {
+      <span class="artwork-empty">Sin imagen</span>
+    }
+  </span>
+
+  <span class="card-info">
+    <strong>[{{ card().race }}]</strong>
+    <span>{{ typeLabel }}</span>
+    <span class="card-desc">{{ card().desc }}</span>
+  </span>
+
+  @if (hasStats) {
+    <span class="card-stats">
+      <span>ATK/{{ card().atk ?? '?' }}</span>
+      <span>DEF/{{ card().def ?? '?' }}</span>
+    </span>
+  }
 </button>

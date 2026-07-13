@@ -1,4 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 
 export interface SectionTab {
   title: string;
@@ -12,7 +12,7 @@ export interface SectionTab {
   styleUrl: './section-tabs.css',
 })
 export class SectionTabs {
-  @Input({ required: true }) sections: SectionTab[] = [];
+  sections = input.required<SectionTab[]>();
 
   activeIndex = signal(0);
 }

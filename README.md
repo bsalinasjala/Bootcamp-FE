@@ -1,11 +1,18 @@
 # Duelist Codex
 
-Challenge 1 de Fundamentos de Angular: explorador simple de cartas de Yu-Gi-Oh!.
+Challenge 1 de Fundamentos de Angular: explorador de cartas de Yu-Gi-Oh! con catalogo, busqueda y detalle en modal.
 
-## Ejecutar el proyecto
+## Ejecutar
+
+Instalar dependencias:
 
 ```bash
 npm install
+```
+
+Levantar el servidor de desarrollo:
+
+```bash
 npm start
 ```
 
@@ -15,14 +22,7 @@ Abrir la app en:
 http://localhost:4200/
 ```
 
-En PowerShell tambien puedes usar:
-
-```bash
-npm.cmd install
-npm.cmd start
-```
-
-## Build
+Generar build:
 
 ```bash
 npm run build
@@ -36,10 +36,16 @@ La app consume la API publica de YGOPRODeck:
 https://db.ygoprodeck.com/api/v7/cardinfo.php
 ```
 
+Catalogo inicial paginado de 500 en 500:
+
+```text
+https://db.ygoprodeck.com/api/v7/cardinfo.php?num=500&offset=0
+```
+
 Busqueda por nombre parcial:
 
 ```text
-https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=Dragon
+https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=Dark%20Magician&num=500&offset=0
 ```
 
 ## Estructura principal
@@ -56,4 +62,6 @@ src/app/components/section-tabs
 
 ## Estado
 
-El estado de busqueda, carga, error, catalogo y carta seleccionada se maneja con Angular Signals.
+El estado de busqueda, resultados, carga, error, pagina actual y carta seleccionada se maneja con Angular Signals.
+
+No se usa BehaviorSubject para el estado principal porque esta pantalla maneja estado local y visual. Signals permite actualizar el template de forma directa y con menos codigo.

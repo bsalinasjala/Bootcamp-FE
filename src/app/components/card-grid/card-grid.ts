@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { YugiohCard } from '../../models/yugioh-card.model';
 import { CardItem } from '../card-item/card-item';
 
@@ -9,7 +9,7 @@ import { CardItem } from '../card-item/card-item';
   styleUrl: './card-grid.css',
 })
 export class CardGrid {
-  @Input({ required: true }) cards: YugiohCard[] = [];
-  @Input() selectedCardId?: number;
-  @Output() cardSelected = new EventEmitter<YugiohCard>();
+  cards = input.required<YugiohCard[]>();
+  selectedCardId = input<number | undefined>();
+  cardSelected = output<YugiohCard>();
 }

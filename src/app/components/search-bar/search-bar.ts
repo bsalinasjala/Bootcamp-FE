@@ -2,10 +2,9 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  EventEmitter,
-  Input,
-  Output,
-  ViewChild,
+  input,
+  output,
+  viewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -16,16 +15,16 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './search-bar.css',
 })
 export class SearchBar implements AfterViewInit {
-  @Input() value = '';
-  @Output() search = new EventEmitter<string>();
+  value = input('');
+  search = output<string>();
 
-  @ViewChild('searchInput') private readonly searchInput?: ElementRef<HTMLInputElement>;
+  private readonly searchInput = viewChild<ElementRef<HTMLInputElement>>('searchInput');
 
   searchTerm = '';
 
   ngAfterViewInit(): void {
-    this.searchTerm = this.value;
-    this.searchInput?.nativeElement.focus();
+    this.searchTerm = this.value();
+    this.searchInput()?.nativeElement.focus();
   }
 
   onSubmit(): void {

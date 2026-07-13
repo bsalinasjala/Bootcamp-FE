@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { YugiohCard, YugiohCardResponse } from '../models/yugioh-card.model';
 
@@ -7,18 +7,28 @@ import { YugiohCard, YugiohCardResponse } from '../models/yugioh-card.model';
   providedIn: 'root',
 })
 export class YugiohCardService {
+  private readonly http = inject(HttpClient);
   private readonly apiUrl = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';
-  private readonly defaultSearch = 'Dragon';
 
-  constructor(private readonly http: HttpClient) {}
+  getInitialCards(limit: number, offset: number): Observable<YugiohCard[]> {
+    const params = new HttpParams().set('num', limit).set('offset', offset);
 
-  getInitialCards(): Observable<YugiohCard[]> {
-    return this.searchCards(this.defaultSearch);
+    return this.http
+      .get<YugiohCardResponse>(this.apiUrl, { params })
+      .pipe(map((response) => response.data ?? []));
   }
 
-  searchCards(term: string): Observable<YugiohCard[]> {
-    const searchTerm = term.trim() || this.defaultSearch;
-    const params = new HttpParams().set('fname', searchTerm);
+  searchCards(term: string, limit: number, offset: number): Observable<YugiohCard[]> {
+    const searchTerm = term.trim();
+
+    if (!searchTerm) {
+      return this.getInitialCards(limit, offset);
+    }
+
+    const params = new HttpParams()
+      .set('fname', searchTerm)
+      .set('num', limit)
+      .set('offset', offset);
 
     return this.http.get<YugiohCardResponse>(this.apiUrl, { params }).pipe(
       map((response) => response.data ?? []),

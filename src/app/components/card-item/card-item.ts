@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { YugiohCard } from '../../models/yugioh-card.model';
 
 @Component({
@@ -8,11 +8,29 @@ import { YugiohCard } from '../../models/yugioh-card.model';
   styleUrl: './card-item.css',
 })
 export class CardItem {
-  @Input({ required: true }) card!: YugiohCard;
-  @Input() selected = false;
-  @Output() selectedCard = new EventEmitter<YugiohCard>();
+  card = input.required<YugiohCard>();
+  selected = input(false);
+  selectedCard = output<YugiohCard>();
 
-  get imageUrl(): string {
-    return this.card.card_images[0]?.image_url_small ?? '';
+  get artworkUrl(): string {
+    const card = this.card();
+
+    return card.card_images[0]?.image_url_cropped ?? card.card_images[0]?.image_url_small ?? '';
+  }
+
+  get typeLabel(): string {
+    const card = this.card();
+
+    return card.humanReadableCardType || card.type;
+  }
+
+  get stars(): unknown[] {
+    return Array.from({ length: this.card().level ?? 0 });
+  }
+
+  get hasStats(): boolean {
+    const card = this.card();
+
+    return card.atk !== undefined || card.def !== undefined;
   }
 }

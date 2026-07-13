@@ -1,37 +1,136 @@
 .card-item {
   width: 100%;
   min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-  padding: 0.75rem;
-  border: 2px solid #d1d5db;
-  background: white;
-  color: #111827;
+  display: grid;
+  grid-template-rows: minmax(2.4rem, auto) 1.2rem auto minmax(6rem, auto) auto;
+  gap: 0.35rem;
+  padding: 0.5rem;
+  border: 4px solid #3a2a1a;
+  background: linear-gradient(135deg, #b66a32, #e5a35d, #8c421f);
+  color: #111;
   text-align: left;
   font: inherit;
   cursor: pointer;
+  box-shadow: 0 2px 0 #111;
 }
 
 .card-item:hover,
 .card-item.is-selected {
-  border-color: #1f2937;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgb(0 0 0 / 0.18);
 }
 
-.card-image {
+.card-item.is-selected {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.card-item.frame-normal {
+  background: linear-gradient(135deg, #c88b42, #f0bb6c, #9b5f25);
+}
+
+.card-item.frame-effect {
+  background: linear-gradient(135deg, #b66832, #df9652, #88401d);
+}
+
+.card-item.frame-spell {
+  background: linear-gradient(135deg, #168277, #54b4a9, #0d5d58);
+}
+
+.card-item.frame-trap {
+  background: linear-gradient(135deg, #a23b78, #d978ae, #732452);
+}
+
+.card-item.frame-extra {
+  background: linear-gradient(135deg, #475569, #cbd5e1, #334155);
+}
+
+.card-title,
+.card-info,
+.card-stats {
+  border: 2px solid rgb(0 0 0 / 0.55);
+  background: rgb(255 255 255 / 0.58);
+  box-shadow:
+    inset 2px 2px 0 rgb(255 255 255 / 0.35),
+    inset -2px -2px 0 rgb(0 0 0 / 0.16);
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  padding: 0.35rem 0.45rem;
+  font-family: "Times New Roman", serif;
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.card-stars {
+  min-height: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.08rem;
+  padding-inline: 0.2rem;
+}
+
+.star {
+  width: 0.85rem;
+  height: 0.85rem;
+  object-fit: contain;
+}
+
+.artwork-frame {
   width: 100%;
-  aspect-ratio: 2.5 / 3.5;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 4px solid #c5cbd3;
+  background: #111827;
+  overflow: hidden;
+}
+
+.card-artwork {
+  width: 100%;
+  height: 100%;
+  display: block;
   object-fit: cover;
-  background: #e5e7eb;
 }
 
-.card-name {
+.artwork-empty {
+  color: white;
   font-weight: 700;
+}
+
+.card-info {
+  display: grid;
+  gap: 0.2rem;
+  align-content: start;
+  padding: 0.4rem;
+  font-family: "Times New Roman", serif;
+}
+
+.card-info strong,
+.card-info span {
+  font-size: 0.75rem;
   line-height: 1.2;
 }
 
-.card-type {
-  color: #4b5563;
-  font-size: 0.9rem;
-  line-height: 1.2;
+.card-desc {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.card-stats {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  padding: 0.25rem 0.35rem;
+  font-family: "Times New Roman", serif;
+  font-size: 0.8rem;
+  font-weight: 800;
 }

@@ -19,7 +19,16 @@
       <div class="catalog-panel">
         <div class="panel-header">
           <h2>Catalogo</h2>
-          <span>{{ cards().length }} cartas</span>
+          <div class="catalog-actions">
+            <span>{{ cards().length }} cartas</span>
+            <button type="button" [disabled]="currentPage() === 1 || loading()" (click)="previousPage()">
+              Anterior
+            </button>
+            <span>Pagina {{ currentPage() }}</span>
+            <button type="button" [disabled]="cards().length < 500 || loading()" (click)="nextPage()">
+              Siguiente
+            </button>
+          </div>
         </div>
 
         <app-card-grid
@@ -28,19 +37,19 @@
           (cardSelected)="selectCard($event)"
         />
       </div>
+    </section>
+  }
 
-      <aside class="detail-panel">
+  @if (selectedCard(); as card) {
+    <section class="modal-backdrop" aria-labelledby="card-detail-title" role="dialog" aria-modal="true">
+      <div class="modal-panel">
         <div class="panel-header">
-          <h2>Detalle</h2>
-          <button type="button" (click)="clearSelection()">Limpiar</button>
+          <h2 id="card-detail-title">Detalle</h2>
+          <button type="button" (click)="clearSelection()">Cerrar</button>
         </div>
 
-        @if (selectedCard(); as card) {
-          <app-card-detail [card]="card" />
-        } @else {
-          <p class="state-message">Selecciona una carta del catalogo.</p>
-        }
-      </aside>
+        <app-card-detail [card]="card" />
+      </div>
     </section>
   }
 </main>

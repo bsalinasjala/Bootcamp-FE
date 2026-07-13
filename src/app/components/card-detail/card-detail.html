@@ -1,12 +1,12 @@
 <article class="detail">
-  <img class="detail-image" [src]="imageUrl" [alt]="card.name" />
+  <img class="detail-image" [src]="imageUrl" [alt]="card().name" />
 
   <div class="detail-content">
     <div class="detail-header">
-      <p class="detail-kicker">{{ card.type }}</p>
-      <h2>{{ card.name }}</h2>
-      @if (card.archetype) {
-        <span class="detail-chip">{{ card.archetype }}</span>
+      <p class="detail-kicker">{{ card().type }}</p>
+      <h2>{{ card().name }}</h2>
+      @if (card().archetype) {
+        <span class="detail-chip">{{ card().archetype }}</span>
       }
     </div>
 

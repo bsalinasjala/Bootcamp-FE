@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { YugiohCard } from '../../models/yugioh-card.model';
 import { SectionTab, SectionTabs } from '../section-tabs/section-tabs';
 
@@ -9,21 +9,23 @@ import { SectionTab, SectionTabs } from '../section-tabs/section-tabs';
   styleUrl: './card-detail.css',
 })
 export class CardDetail {
-  @Input({ required: true }) card!: YugiohCard;
+  card = input.required<YugiohCard>();
 
   get imageUrl(): string {
-    return this.card.card_images[0]?.image_url ?? '';
+    return this.card().card_images[0]?.image_url ?? '';
   }
 
   get price(): string {
-    return this.card.card_prices?.[0]?.tcgplayer_price ?? 'N/A';
+    return this.card().card_prices?.[0]?.tcgplayer_price ?? 'N/A';
   }
 
   get sections(): SectionTab[] {
+    const card = this.card();
+
     return [
       {
         title: 'Efecto',
-        content: this.card.desc,
+        content: card.desc,
       },
       {
         title: 'Estadisticas',
@@ -37,21 +39,22 @@ export class CardDetail {
   }
 
   private get statsText(): string {
+    const card = this.card();
     const parts = [
-      `Tipo: ${this.card.humanReadableCardType || this.card.type}`,
-      `Raza: ${this.card.race}`,
+      `Tipo: ${card.humanReadableCardType || card.type}`,
+      `Raza: ${card.race}`,
     ];
 
-    if (this.card.attribute) {
-      parts.push(`Atributo: ${this.card.attribute}`);
+    if (card.attribute) {
+      parts.push(`Atributo: ${card.attribute}`);
     }
 
-    if (this.card.level) {
-      parts.push(`Nivel: ${this.card.level}`);
+    if (card.level) {
+      parts.push(`Nivel: ${card.level}`);
     }
 
-    if (this.card.atk !== undefined && this.card.def !== undefined) {
-      parts.push(`ATK/${this.card.atk} DEF/${this.card.def}`);
+    if (card.atk !== undefined && card.def !== undefined) {
+      parts.push(`ATK/${card.atk} DEF/${card.def}`);
     }
 
     return parts.join(' | ');
