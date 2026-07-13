@@ -1,11 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Service, inject } from '@angular/core';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { YugiohCard, YugiohCardResponse } from '../models/yugioh-card.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class YugiohCardService {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';

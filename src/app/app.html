@@ -5,47 +5,55 @@
       <h1>Explorador de cartas Yu-Gi-Oh!</h1>
     </div>
 
-    <app-search-bar [value]="searchTerm()" (search)="searchCards($event)" />
+    <app-search-bar [value]="cardStore.searchTerm()" (searchSubmitted)="cardStore.searchCards($event)" />
   </section>
 
-  @if (loading()) {
+  @if (cardStore.loading()) {
     <p class="state-message">Cargando cartas...</p>
-  } @else if (error()) {
-    <p class="state-message state-error">{{ error() }}</p>
-  } @else if (cards().length === 0) {
-    <p class="state-message">No se encontraron cartas para "{{ searchTerm() }}".</p>
+  } @else if (cardStore.error()) {
+    <p class="state-message state-error">{{ cardStore.error() }}</p>
+  } @else if (cardStore.cards().length === 0) {
+    <p class="state-message">No se encontraron cartas para "{{ cardStore.searchTerm() }}".</p>
   } @else {
     <section class="content-layout">
       <div class="catalog-panel">
         <div class="panel-header">
           <h2>Catalogo</h2>
           <div class="catalog-actions">
-            <span>{{ cards().length }} cartas</span>
-            <button type="button" [disabled]="currentPage() === 1 || loading()" (click)="previousPage()">
+            <span>{{ cardStore.cards().length }} cartas</span>
+            <button
+              type="button"
+              [disabled]="cardStore.currentPage() === 1 || cardStore.loading()"
+              (click)="cardStore.previousPage()"
+            >
               Anterior
             </button>
-            <span>Pagina {{ currentPage() }}</span>
-            <button type="button" [disabled]="cards().length < 500 || loading()" (click)="nextPage()">
+            <span>Pagina {{ cardStore.currentPage() }}</span>
+            <button
+              type="button"
+              [disabled]="cardStore.cards().length < 500 || cardStore.loading()"
+              (click)="cardStore.nextPage()"
+            >
               Siguiente
             </button>
           </div>
         </div>
 
         <app-card-grid
-          [cards]="cards()"
-          [selectedCardId]="selectedCard()?.id"
-          (cardSelected)="selectCard($event)"
+          [cards]="cardStore.cards()"
+          [selectedCardId]="cardStore.selectedCard()?.id"
+          (cardSelected)="cardStore.selectCard($event)"
         />
       </div>
     </section>
   }
 
-  @if (selectedCard(); as card) {
+  @if (cardStore.selectedCard(); as card) {
     <section class="modal-backdrop" aria-labelledby="card-detail-title" role="dialog" aria-modal="true">
       <div class="modal-panel">
         <div class="panel-header">
           <h2 id="card-detail-title">Detalle</h2>
-          <button type="button" (click)="clearSelection()">Cerrar</button>
+          <button type="button" (click)="cardStore.clearSelection()">Cerrar</button>
         </div>
 
         <app-card-detail [card]="card" />

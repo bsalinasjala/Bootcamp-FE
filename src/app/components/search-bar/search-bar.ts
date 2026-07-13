@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class SearchBar implements AfterViewInit {
   value = input('');
-  search = output<string>();
+  searchSubmitted = output<string>();
 
   private readonly searchInput = viewChild<ElementRef<HTMLInputElement>>('searchInput');
 
@@ -28,6 +28,6 @@ export class SearchBar implements AfterViewInit {
   }
 
   onSubmit(): void {
-    this.search.emit(this.searchTerm);
+    this.searchSubmitted.emit(this.searchTerm);
   }
 }
