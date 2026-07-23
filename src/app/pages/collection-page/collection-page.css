@@ -1,0 +1,34 @@
+.collection-page {
+  min-height: 100vh;
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: #f3f4f6;
+}
+
+.back-link {
+  width: fit-content;
+  color: #111827;
+  font-weight: 700;
+}
+
+.collection-panel {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border: 2px solid #1f2937;
+  background: white;
+}
+
+.collection-panel h1,
+.collection-panel p {
+  margin: 0;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #4b5563;
+  font-weight: 700;
+  text-transform: uppercase;
+}

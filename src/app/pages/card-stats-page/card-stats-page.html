@@ -1,0 +1,33 @@
+@if (detailStore.card(); as card) {
+  <section class="detail-section">
+    <h3>Estadisticas</h3>
+    <dl class="stats-list">
+      <div>
+        <dt>Tipo</dt>
+        <dd>{{ card.humanReadableCardType || card.type }}</dd>
+      </div>
+      <div>
+        <dt>Raza</dt>
+        <dd>{{ card.race }}</dd>
+      </div>
+      @if (card.attribute) {
+        <div>
+          <dt>Atributo</dt>
+          <dd>{{ card.attribute }}</dd>
+        </div>
+      }
+      @if (card.level) {
+        <div>
+          <dt>Nivel</dt>
+          <dd>{{ card.level }}</dd>
+        </div>
+      }
+      @if (card.atk !== undefined || card.def !== undefined) {
+        <div>
+          <dt>ATK / DEF</dt>
+          <dd>{{ card.atk ?? '?' }} / {{ card.def ?? '?' }}</dd>
+        </div>
+      }
+    </dl>
+  </section>
+}

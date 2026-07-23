@@ -1,5 +1,7 @@
 <button
   class="card-item"
+  appCardHighlight
+  [atk]="card().atk"
   [class.is-selected]="selected()"
   [class.frame-normal]="card().frameType === 'normal'"
   [class.frame-effect]="card().frameType === 'effect'"

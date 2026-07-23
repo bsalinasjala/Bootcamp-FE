@@ -1,0 +1,33 @@
+<main class="detail-page">
+  <a class="back-link" routerLink="/catalog">Volver al catalogo</a>
+
+  @if (detailStore.loading()) {
+    <p class="state-message">Cargando carta...</p>
+  } @else if (detailStore.error()) {
+    <p class="state-message state-error">{{ detailStore.error() }}</p>
+  } @else if (detailStore.card(); as card) {
+    <article class="detail-card">
+      <img class="detail-image" [src]="card.card_images[0]?.image_url" [alt]="card.name" />
+
+      <div class="detail-content">
+        <header class="detail-header">
+          <p class="detail-kicker">{{ card.type }}</p>
+          <h1>{{ card.name }}</h1>
+          @if (card.archetype) {
+            <span class="detail-chip">{{ card.archetype }}</span>
+          }
+        </header>
+
+        <nav class="detail-tabs" aria-label="Secciones de carta">
+          <a routerLink="effect" routerLinkActive="is-active">Efecto</a>
+          <a routerLink="stats" routerLinkActive="is-active">Estadisticas</a>
+          <a routerLink="price" routerLinkActive="is-active">Precio</a>
+        </nav>
+
+        <section class="detail-section-panel">
+          <router-outlet />
+        </section>
+      </div>
+    </article>
+  }
+</main>

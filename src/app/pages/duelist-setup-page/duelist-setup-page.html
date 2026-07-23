@@ -1,0 +1,17 @@
+<main class="setup-page">
+  <a class="back-link" routerLink="/catalog">Volver al catalogo</a>
+
+  <form class="setup-panel" (ngSubmit)="saveAlias()">
+    <p class="eyebrow">Perfil de duelista</p>
+    <h1>Configura tu alias</h1>
+    <label for="duelist-alias">Alias</label>
+    <input
+      id="duelist-alias"
+      name="duelist-alias"
+      type="text"
+      placeholder="Ej. Kaiba"
+      [(ngModel)]="alias"
+    />
+    <button type="submit">Entrar a mi coleccion</button>
+  </form>
+</main>

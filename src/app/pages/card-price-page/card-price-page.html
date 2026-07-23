@@ -1,0 +1,8 @@
+@if (detailStore.card(); as card) {
+  <section class="detail-section">
+    <h3>Precio</h3>
+    <p>TCGPlayer: {{ card.card_prices?.[0]?.tcgplayer_price | cardPrice }}</p>
+    <p>Cardmarket: {{ card.card_prices?.[0]?.cardmarket_price | cardPrice }}</p>
+    <p>eBay: {{ card.card_prices?.[0]?.ebay_price | cardPrice }}</p>
+  </section>
+}

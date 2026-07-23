@@ -1,0 +1,9 @@
+.detail-section {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.detail-section h3,
+.detail-section p {
+  margin: 0;
+}

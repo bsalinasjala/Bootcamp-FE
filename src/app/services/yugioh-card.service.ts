@@ -16,6 +16,24 @@ export class YugiohCardService {
       .pipe(map((response) => response.data ?? []));
   }
 
+  getCardById(id: string): Observable<YugiohCard> {
+    const params = new HttpParams().set('id', id);
+
+    return this.http
+      .get<YugiohCardResponse>(this.apiUrl, { params })
+      .pipe(
+        map((response) => {
+          const card = response.data?.[0];
+
+          if (!card) {
+            throw new Error('Card not found');
+          }
+
+          return card;
+        }),
+      );
+  }
+
   searchCards(term: string, limit: number, offset: number): Observable<YugiohCard[]> {
     const searchTerm = term.trim();
 

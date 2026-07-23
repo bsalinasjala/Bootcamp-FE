@@ -1,9 +1,10 @@
 import { Component, input, output } from '@angular/core';
+import { CardHighlightDirective } from '../../directives/card-highlight.directive';
 import { YugiohCard } from '../../models/yugioh-card.model';
 
 @Component({
   selector: 'app-card-item',
-  imports: [],
+  imports: [CardHighlightDirective],
   templateUrl: './card-item.html',
   styleUrl: './card-item.css',
 })

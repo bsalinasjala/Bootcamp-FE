@@ -25,6 +25,13 @@
   outline-offset: 2px;
 }
 
+.card-item.is-highlighted-card {
+  border-color: #f5c542;
+  box-shadow:
+    0 0 0 3px rgb(245 197 66 / 0.45),
+    0 12px 24px rgb(0 0 0 / 0.22);
+}
+
 .card-item.frame-normal {
   background: linear-gradient(135deg, #c88b42, #f0bb6c, #9b5f25);
 }
