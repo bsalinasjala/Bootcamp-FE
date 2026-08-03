@@ -3,8 +3,9 @@
   grid-template-columns: minmax(180px, 260px) 1fr;
   gap: 1.25rem;
   padding: 1rem;
-  border: 2px solid #1f2937;
-  background: white;
+  border: 1px solid var(--color-border);
+  background: linear-gradient(180deg, rgb(24 35 56 / 0.96), rgb(13 20 34 / 0.96));
+  box-shadow: var(--shadow-panel);
 }
 
 .detail-image {
@@ -31,14 +32,16 @@
 }
 
 .detail-kicker {
-  color: #4b5563;
+  color: var(--color-accent);
   font-weight: 700;
 }
 
 .detail-chip {
   width: fit-content;
   padding: 0.25rem 0.55rem;
-  background: #e5e7eb;
+  border: 1px solid var(--color-border);
+  background: var(--color-accent-soft);
+  color: #f8d875;
   font-size: 0.9rem;
 }
 

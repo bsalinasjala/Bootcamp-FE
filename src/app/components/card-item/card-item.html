@@ -1,4 +1,4 @@
-<button
+<article
   class="card-item"
   appCardHighlight
   [atk]="card().atk"
@@ -8,8 +8,6 @@
   [class.frame-spell]="card().frameType === 'spell'"
   [class.frame-trap]="card().frameType === 'trap'"
   [class.frame-extra]="card().frameType !== 'normal' && card().frameType !== 'effect' && card().frameType !== 'spell' && card().frameType !== 'trap'"
-  type="button"
-  (click)="selectedCard.emit(card())"
 >
   <span class="card-title">{{ card().name }}</span>
 
@@ -39,4 +37,16 @@
       <span>DEF/{{ card().def ?? '?' }}</span>
     </span>
   }
-</button>
+
+  <span class="card-actions">
+    <button class="card-action" type="button" (click)="selectedCard.emit(card())">Ver detalle</button>
+    <button
+      class="card-action card-action-secondary"
+      type="button"
+      [class.is-added]="inCollection()"
+      (click)="onCollectionClick()"
+    >
+      {{ inCollection() ? 'En coleccion' : 'Agregar' }}
+    </button>
+  </span>
+</article>

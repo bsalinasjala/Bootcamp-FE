@@ -11,5 +11,7 @@ import { CardItem } from '../card-item/card-item';
 export class CardGrid {
   cards = input.required<YugiohCard[]>();
   selectedCardId = input<number | undefined>();
+  collectionCardIds = input<number[]>([]);
   cardSelected = output<YugiohCard>();
+  collectionToggled = output<YugiohCard>();
 }

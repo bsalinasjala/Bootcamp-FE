@@ -11,7 +11,9 @@ import { YugiohCard } from '../../models/yugioh-card.model';
 export class CardItem {
   card = input.required<YugiohCard>();
   selected = input(false);
+  inCollection = input(false);
   selectedCard = output<YugiohCard>();
+  collectionToggled = output<YugiohCard>();
 
   get artworkUrl(): string {
     const card = this.card();
@@ -33,5 +35,9 @@ export class CardItem {
     const card = this.card();
 
     return card.atk !== undefined || card.def !== undefined;
+  }
+
+  onCollectionClick(): void {
+    this.collectionToggled.emit(this.card());
   }
 }

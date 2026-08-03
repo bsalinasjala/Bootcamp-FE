@@ -4,6 +4,17 @@
   <section class="collection-panel">
     <p class="eyebrow">Mi coleccion</p>
     <h1>{{ profile.alias() }}</h1>
-    <p>Este sera el espacio personal para guardar cartas favoritas y futuros mazos.</p>
+    <p>{{ collectionStore.cards().length }} cartas guardadas durante esta sesion.</p>
   </section>
+
+  @if (collectionStore.cards().length === 0) {
+    <p class="state-message">Aun no tienes cartas en tu coleccion.</p>
+  } @else {
+    <app-card-grid
+      [cards]="collectionStore.cards()"
+      [collectionCardIds]="collectionStore.cards().map(card => card.id)"
+      (cardSelected)="openCard($event)"
+      (collectionToggled)="collectionStore.toggleCard($event)"
+    />
+  }
 </main>

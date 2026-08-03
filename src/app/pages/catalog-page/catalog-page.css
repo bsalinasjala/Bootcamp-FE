@@ -4,13 +4,16 @@
   align-content: start;
   gap: 1.5rem;
   padding: 1.5rem;
-  background: #f3f4f6;
+  background:
+    radial-gradient(circle at 20% 0, rgb(245 197 66 / 0.1), transparent 24rem),
+    linear-gradient(180deg, rgb(16 24 39 / 0.9), rgb(9 13 22 / 0.95));
 }
 
 .hero,
 .catalog-panel {
-  border: 2px solid #1f2937;
-  background: white;
+  border: 1px solid var(--color-border);
+  background: linear-gradient(180deg, rgb(24 35 56 / 0.96), rgb(13 20 34 / 0.96));
+  box-shadow: var(--shadow-panel);
 }
 
 .hero {
@@ -29,7 +32,7 @@ h2 {
 }
 
 .eyebrow {
-  color: #4b5563;
+  color: var(--color-accent);
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -43,7 +46,7 @@ h1 {
 .collection-link {
   display: inline-block;
   margin-top: 0.85rem;
-  color: #111827;
+  color: var(--color-text);
   font-weight: 700;
 }
 
@@ -66,7 +69,7 @@ h1 {
 }
 
 .panel-header span {
-  color: #4b5563;
+  color: var(--color-muted);
   font-weight: 700;
 }
 
@@ -80,10 +83,16 @@ h1 {
 
 .panel-header button {
   padding: 0.45rem 0.7rem;
-  border: 2px solid #d1d5db;
-  background: white;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-text);
   font: inherit;
   cursor: pointer;
+}
+
+.panel-header button:hover:not(:disabled) {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
 }
 
 .panel-header button:disabled {
@@ -94,14 +103,14 @@ h1 {
 .state-message {
   margin: 0;
   padding: 1rem;
-  border: 2px solid #d1d5db;
-  background: white;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
   font-weight: 700;
 }
 
 .state-error {
-  border-color: #991b1b;
-  color: #991b1b;
+  border-color: var(--color-danger);
+  color: var(--color-danger);
 }
 
 @media (max-width: 960px) {

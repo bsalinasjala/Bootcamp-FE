@@ -43,7 +43,9 @@
         <app-card-grid
           [cards]="cardStore.cards()"
           [selectedCardId]="cardStore.selectedCard()?.id"
+          [collectionCardIds]="collectionStore.cards().map(card => card.id)"
           (cardSelected)="openCard($event)"
+          (collectionToggled)="collectionStore.toggleCard($event)"
         />
       </div>
     </section>

@@ -12,16 +12,17 @@
 
 .tab-button {
   padding: 0.55rem 0.75rem;
-  border: 2px solid #d1d5db;
-  background: white;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-text);
   font: inherit;
   cursor: pointer;
 }
 
 .tab-button.is-active {
-  border-color: #1f2937;
-  background: #1f2937;
-  color: white;
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+  color: #f8d875;
 }
 
 .tab-panel {
@@ -29,7 +30,8 @@
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
-  border: 2px solid #d1d5db;
+  border: 1px solid var(--color-border);
+  background: rgb(7 11 19 / 0.45);
 }
 
 .tab-panel h3,

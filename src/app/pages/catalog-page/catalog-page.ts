@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { CardGrid } from '../../components/card-grid/card-grid';
 import { SearchBar } from '../../components/search-bar/search-bar';
 import { YugiohCard } from '../../models/yugioh-card.model';
+import { CardCollectionStoreService } from '../../services/card-collection-store.service';
 import { YugiohCardStoreService } from '../../services/yugioh-card-store.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { YugiohCardStoreService } from '../../services/yugioh-card-store.service
 })
 export class CatalogPage implements OnInit {
   readonly cardStore = inject(YugiohCardStoreService);
+  readonly collectionStore = inject(CardCollectionStoreService);
   private readonly router = inject(Router);
 
   ngOnInit(): void {

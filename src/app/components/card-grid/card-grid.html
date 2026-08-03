@@ -3,7 +3,9 @@
     <app-card-item
       [card]="card"
       [selected]="card.id === selectedCardId()"
+      [inCollection]="collectionCardIds().includes(card.id)"
       (selectedCard)="cardSelected.emit($event)"
+      (collectionToggled)="collectionToggled.emit($event)"
     />
   }
 </section>

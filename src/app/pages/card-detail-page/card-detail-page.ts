@@ -15,7 +15,7 @@ export class CardDetailPage implements OnInit {
 
   ngOnInit(): void {
     const card = this.route.snapshot.data['card'] as YugiohCard | null;
-
+    // Lee la carta que el resolver dejo preparada antes de activar esta ruta.
     if (!card) {
       this.detailStore.setError('No se encontro la carta solicitada.');
       return;

@@ -2,15 +2,37 @@
   box-sizing: border-box;
 }
 
+:root {
+  color-scheme: dark;
+  --color-page: #090d16;
+  --color-page-soft: #101827;
+  --color-surface: #131c2d;
+  --color-surface-strong: #182338;
+  --color-border: #2d3b54;
+  --color-border-strong: #51617c;
+  --color-text: #e8edf7;
+  --color-muted: #9aa8bd;
+  --color-accent: #f5c542;
+  --color-accent-soft: rgb(245 197 66 / 0.16);
+  --color-danger: #f87171;
+  --shadow-panel: 0 22px 50px rgb(0 0 0 / 0.35);
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  color: #111827;
-  background: #f3f4f6;
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at top left, rgb(245 197 66 / 0.08), transparent 28rem),
+    linear-gradient(180deg, #0d1320 0%, var(--color-page) 45%, #070a11 100%);
 }
 
 button,
 input {
   border-radius: 0;
+}
+
+a {
+  color: inherit;
 }

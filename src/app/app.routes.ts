@@ -20,9 +20,9 @@ export const routes: Routes = [
     },
     children: [
       { path: '', redirectTo: 'effect', pathMatch: 'full' },
-      { path: 'effect', component: CardEffectPage },
-      { path: 'stats', component: CardStatsPage },
-      { path: 'price', component: CardPricePage },
+      { path: 'effect', loadComponent : () => import('./pages/card-effect-page/card-effect-page').then(m => m.CardEffectPage) },
+      { path: 'stats', loadComponent : () => import('./pages/card-stats-page/card-stats-page').then(m => m.CardStatsPage) },
+      { path: 'price', loadComponent : () => import('./pages/card-price-page/card-price-page').then(m => m.CardPricePage) },
     ],
   },
   { path: 'setup', component: DuelistSetupPage },
